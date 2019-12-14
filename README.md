@@ -1,7 +1,5 @@
-### Daktrio Project
-## Author
+#Daktrio Project: Ideal Tournament
+##Author
 * Hyeokwoo Kwon
-* Dog-jh
-* Seunghyeon Jang
-
-* Ideal Tournament
+* dog-jh
+* Seunghyun Jang
