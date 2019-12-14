@@ -1,13 +1,16 @@
 package graphic;
 
+import graphic.gamepanel.GamePanel;
+import graphic.titlePanel.TitlePanel;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame {
 
-    JPanel mainPanel;
-    TitlePanel titlePanel;
-    GamePanel gamePanel;
+    private JPanel mainPanel;
+    private TitlePanel titlePanel;
+    private GamePanel gamePanel;
 
     public MainFrame() {
         JFrame mainFrame = new JFrame();
@@ -20,14 +23,13 @@ public class MainFrame {
 
         // gamePanel
         gamePanel = new GamePanel();
-//        mainPanel.add(gamePanel.getPanel(), BorderLayout.CENTER);
 
         // titlePanel
         titlePanel = new TitlePanel(mainPanel, gamePanel);
         mainPanel.add(titlePanel.getPanel(), BorderLayout.CENTER);
 
 
-        mainFrame.setSize(1280, 720);
+        mainFrame.setSize(800, 600);
         mainFrame.setResizable(false);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setVisible(true);

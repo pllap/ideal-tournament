@@ -1,7 +1,6 @@
 package events;
 
-import graphic.GamePanel;
-import graphic.TitlePanel;
+import graphic.gamepanel.GamePanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,6 +24,7 @@ public class MenuButtonListener implements ActionListener {
         String compare = button.getText();
         switch (compare) {
             case "게임 시작":
+                System.out.println("game start");
                 mainPanel.removeAll();
                 mainPanel.add(gamePanel.getPanel(), BorderLayout.CENTER);
                 mainPanel.revalidate();
@@ -34,6 +34,7 @@ public class MenuButtonListener implements ActionListener {
                 System.out.println("setting");
                 break;
             case "게임 종료":
+                System.out.println("exit");
                 System.exit(0);
         }
     }
