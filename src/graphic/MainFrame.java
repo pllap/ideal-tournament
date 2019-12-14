@@ -3,28 +3,33 @@ package graphic;
 import javax.swing.*;
 import java.awt.*;
 
-public class MainFrame extends JFrame {
+public class MainFrame {
 
-    private TitlePanel titlePanel;
+    JPanel mainPanel;
+    TitlePanel titlePanel;
+    GamePanel gamePanel;
 
     public MainFrame() {
-        setTitle("이상형 월드컵");
-
+        JFrame mainFrame = new JFrame();
+        mainFrame.setTitle("이상형 월드컵");
 
 
         // mainPanel
-        JPanel mainPanel = new JPanel(new BorderLayout());
-        getContentPane().add(mainPanel, BorderLayout.CENTER);
+        mainPanel = new JPanel(new BorderLayout());
+        mainFrame.getContentPane().add(mainPanel, BorderLayout.CENTER);
+
+        // gamePanel
+        gamePanel = new GamePanel();
+//        mainPanel.add(gamePanel.getPanel(), BorderLayout.CENTER);
 
         // titlePanel
-        TitlePanel titlePanel = new TitlePanel();
-        mainPanel.add(titlePanel);
+        titlePanel = new TitlePanel(mainPanel, gamePanel);
+        mainPanel.add(titlePanel.getPanel(), BorderLayout.CENTER);
 
 
-
-        setSize(1280, 720);
-        setResizable(false);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
+        mainFrame.setSize(1280, 720);
+        mainFrame.setResizable(false);
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setVisible(true);
     }
 }
