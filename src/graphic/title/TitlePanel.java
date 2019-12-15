@@ -1,8 +1,7 @@
-package graphic.titlePanel;
+package graphic.title;
 
 import events.MenuButtonListener;
-import graphic.gamepanel.GamePanel;
-import graphic.titlePanel.MenuPanel;
+import graphic.game.GamePanel;
 
 import javax.swing.*;
 import java.awt.*;

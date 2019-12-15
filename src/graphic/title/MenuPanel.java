@@ -1,4 +1,4 @@
-package graphic.titlePanel;
+package graphic.title;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,11 +6,11 @@ import java.awt.*;
 public class MenuPanel {
 
     private JPanel menuPanel = new JPanel(new GridLayout(3,1,0,5));
-    private final String[] MENU_TEXT = { "게임 시작", "설정", "게임 종료" };
 
     public MenuPanel(JButton[] menuButton) {
 
-        Font menuFont = new Font("맑은 고딕", Font.PLAIN, 30);
+        Font menuFont = new Font("a옛날사진관4", Font.PLAIN, 30);
+        final String[] MENU_TEXT = { "게임 시작", "설정", "게임 종료" };
 
         menuPanel.setBorder(BorderFactory.createEmptyBorder(100,300,50,300));
         menuPanel.setBackground(Color.white);

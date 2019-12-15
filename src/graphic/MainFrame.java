@@ -1,7 +1,7 @@
 package graphic;
 
-import graphic.gamepanel.GamePanel;
-import graphic.titlePanel.TitlePanel;
+import graphic.game.GamePanel;
+import graphic.title.TitlePanel;
 
 import javax.swing.*;
 import java.awt.*;

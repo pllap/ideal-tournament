@@ -1,6 +1,4 @@
-package graphic.gamepanel;
-
-import graphic.gamepanel.DecisionPanel;
+package graphic.game;
 
 import javax.swing.*;
 import java.awt.*;

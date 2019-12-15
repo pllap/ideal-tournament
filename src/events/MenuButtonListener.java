@@ -1,6 +1,6 @@
 package events;
 
-import graphic.gamepanel.GamePanel;
+import graphic.game.GamePanel;
 
 import javax.swing.*;
 import java.awt.*;
