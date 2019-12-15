@@ -14,6 +14,8 @@ public class GamePanel {
 
     int currentRound;
     int currentLevel;
+    JLabel currentRoundLabel;
+
     ContentPanel leftContent;
     ContentPanel rightContent;
     List<ContentItem> winners = new ArrayList<>();
@@ -21,7 +23,10 @@ public class GamePanel {
 
     public GamePanel() {
 
-        JLabel currentLevel = new JLabel("text");
+        gamePanel.setBorder(BorderFactory.createEmptyBorder(0,50,100,50));
+        gamePanel.setBackground(Color.white);
+
+        JLabel currentLevel = new JLabel(Integer.toString(currentRound));
         currentLevel.setHorizontalAlignment(SwingConstants.CENTER);
         gamePanel.add(currentLevel, BorderLayout.NORTH);
 
@@ -33,10 +38,15 @@ public class GamePanel {
     public void setStageLayout() {
         leftContent = new ContentPanel(fileManager.getContents().get(currentRound * 2));
         rightContent = new ContentPanel(fileManager.getContents().get(currentRound * 2 + 1));
+        currentRoundLabel = new JLabel(Integer.toString(currentRound));
+
+        currentRoundLabel.setFont(new Font("a옛날사진관4", Font.PLAIN, 20));
+        currentRoundLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         leftContent.addContentClick(this::onContentClick);
         rightContent.addContentClick(this::onContentClick);
 
+        gamePanel.add(currentRoundLabel, BorderLayout.NORTH);
         gamePanel.add(leftContent.getPanel(), BorderLayout.WEST);
         gamePanel.add(rightContent.getPanel(), BorderLayout.EAST);
     }
@@ -48,8 +58,7 @@ public class GamePanel {
         System.out.println(selectedItem);
         System.out.println(currentRound);
 
-        gamePanel.remove(leftContent.getPanel());
-        gamePanel.remove(rightContent.getPanel());
+        gamePanel.removeAll();
 
         setStageLayout();
 

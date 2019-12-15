@@ -17,14 +17,32 @@ public class ContentPanel {
 
     public ContentPanel(ContentItem contentItem) {
 
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,50));
+        contentPanel.setBackground(Color.white);
+
         this.item = contentItem;
-        contentPanel.add(new JLabel(contentItem.getImage()), BorderLayout.CENTER);
-        contentPanel.add(new JLabel(contentItem.toString()), BorderLayout.SOUTH);
+        JLabel imageLabel = new JLabel(new ImageIcon(contentItem.getImage()));
+        JLabel nameLabel = new JLabel(contentItem.toString());
+        nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        nameLabel.setFont(new Font("a옛날사진관4", Font.PLAIN, 25));
+
+        contentPanel.add(imageLabel, BorderLayout.CENTER);
+        contentPanel.add(nameLabel, BorderLayout.SOUTH);
 
         contentPanel.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mousePressed(MouseEvent e) {
                 contentClick.accept(item);
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                contentPanel.setBackground(Color.pink);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                contentPanel.setBackground(Color.white);
             }
         });
     }

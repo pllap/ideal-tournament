@@ -1,18 +1,19 @@
 package logic;
 
 import javax.swing.*;
+import java.awt.image.BufferedImage;
 
 public class ContentItem {
 
-    private final ImageIcon image;
+    private final BufferedImage image;
     private final String name;
 
-    public ContentItem(ImageIcon image, String name) {
+    public ContentItem(BufferedImage image, String name) {
         this.image = image;
         this.name = name;
     }
 
-    public ImageIcon getImage() {
+    public BufferedImage getImage() {
         return image;
     }
 
