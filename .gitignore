@@ -16,7 +16,9 @@ local.properties
 .recommenders
 
 # resource directory
-.res/
+res/
+*.png
+*.jpg
 
 # External tool builders
 .externalToolBuilders/

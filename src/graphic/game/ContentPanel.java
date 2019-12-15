@@ -32,17 +32,22 @@ public class ContentPanel {
         contentPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                contentClick.accept(item);
+                contentPanel.setBackground(Color.pink);
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                contentPanel.setBackground(Color.pink);
+                contentPanel.setBackground(Color.pink.darker().brighter());
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 contentPanel.setBackground(Color.white);
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                contentClick.accept(item);
             }
         });
     }

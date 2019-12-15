@@ -23,7 +23,7 @@ public class GamePanel {
 
     public GamePanel() {
 
-        gamePanel.setBorder(BorderFactory.createEmptyBorder(0,50,100,50));
+        gamePanel.setBorder(BorderFactory.createEmptyBorder(30,50,100,50));
         gamePanel.setBackground(Color.white);
 
         JLabel currentLevel = new JLabel(Integer.toString(currentRound));
@@ -40,8 +40,9 @@ public class GamePanel {
         rightContent = new ContentPanel(fileManager.getContents().get(currentRound * 2 + 1));
         currentRoundLabel = new JLabel(Integer.toString(currentRound));
 
-        currentRoundLabel.setFont(new Font("a옛날사진관4", Font.PLAIN, 20));
+        currentRoundLabel.setFont(new Font("a옛날사진관4", Font.PLAIN, 50));
         currentRoundLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        currentRoundLabel.setVerticalAlignment(SwingConstants.CENTER);
 
         leftContent.addContentClick(this::onContentClick);
         rightContent.addContentClick(this::onContentClick);
