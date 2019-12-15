@@ -15,6 +15,9 @@ local.properties
 .loadpath
 .recommenders
 
+# resource directory
+.res/
+
 # External tool builders
 .externalToolBuilders/
 
@@ -209,9 +212,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
-# resources
-*.png
-*.jpg
 
 # End of https://www.gitignore.io/api/java,windows,eclipse,intellij
