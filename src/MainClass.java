@@ -1,4 +1,5 @@
 import graphic.MainFrame;
+import logic.FileManager;
 
 public class MainClass {
 
