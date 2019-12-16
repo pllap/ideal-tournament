@@ -9,7 +9,7 @@ public class ListManager {
     public static List<ContentItem> cutList(List<ContentItem> list) {
 
         List<ContentItem> temp = new ArrayList<>();
-        int size = cutListSize(list);
+        int size = getCutListSize(list);
         for (int i = 0; i < size; ++i) {
             temp.add(list.get(i));
         }
@@ -20,17 +20,10 @@ public class ListManager {
 
         List<ContentItem> temp = list;
         Collections.shuffle(temp);
-
-        int size = cutListSize(list);
-        for (int i = 0; i < size; ++i) {
-            temp.add(list.get(i));
-            System.out.println(i);
-        }
-
         return temp;
     }
 
-    private static int cutListSize(List<ContentItem> list) {
+    private static int getCutListSize(List<ContentItem> list) {
 
         int size = list.size();
         if (size <= 1) {

@@ -2,6 +2,7 @@ package graphic.game;
 
 import logic.ContentItem;
 import logic.FileManager;
+import logic.ListManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +19,7 @@ public class GamePanel {
 
     ContentPanel leftContent;
     ContentPanel rightContent;
-    List<ContentItem> currentContents = new ArrayList<>();
+    List<ContentItem> currentContents;
     List<ContentItem> winners = new ArrayList<>();
     FileManager fileManager;
 
@@ -34,10 +35,12 @@ public class GamePanel {
     }
 
     public void setStageLayout() {
+
+
         leftContent = new ContentPanel(currentContents.get(currentRound * 2));
         rightContent = new ContentPanel(currentContents.get(currentRound * 2 + 1));
-        currentRoundLabel = new JLabel(Integer.toString(currentRound) + "/" + Integer.toString(fileManager.getShuffledContents().size() / 2));
 
+        currentRoundLabel = new JLabel(Integer.toString(currentRound + 1) + "/" + Integer.toString(currentContents.size() / 2));
         currentRoundLabel.setFont(new Font("a옛날사진관4", Font.PLAIN, 50));
         currentRoundLabel.setHorizontalAlignment(SwingConstants.CENTER);
         currentRoundLabel.setVerticalAlignment(SwingConstants.CENTER);
@@ -52,10 +55,16 @@ public class GamePanel {
 
     public void onContentClick(ContentItem selectedItem) {
 
+        System.out.println("==========");
         winners.add(selectedItem);
         ++currentRound;
-        System.out.println(selectedItem);
-        System.out.println(currentRound);
+        System.out.println(currentRound + "라운드: " + selectedItem);
+        System.out.println();
+        System.out.println("currentRound: " + (currentRound));
+        System.out.println("num of contents: " + currentContents.size());
+        if (currentRound == currentContents.size() / 2) {
+            increaseLevel();
+        }
 
         gamePanel.removeAll();
 
@@ -63,6 +72,14 @@ public class GamePanel {
 
         gamePanel.revalidate();
         gamePanel.repaint();
+    }
+
+    public void increaseLevel() {
+        System.out.println("==========");
+        System.out.println("increaseLevel() 실행");
+        currentContents = winners;
+        winners = new ArrayList<>();
+        currentRound = 0;
     }
 
     public void getCurrentRound() {
@@ -82,10 +99,6 @@ public class GamePanel {
     }
 
     public void addWinnerList() {
-
-    }
-
-    public void increaseLevel() {
 
     }
 

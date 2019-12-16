@@ -37,7 +37,7 @@ public class ContentPanel {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                contentPanel.setBackground(Color.pink.darker().brighter());
+                contentPanel.setBackground(new Color(255,230,230));
             }
 
             @Override
