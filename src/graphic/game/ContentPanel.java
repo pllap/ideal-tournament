@@ -1,6 +1,7 @@
 package graphic.game;
 
 import logic.ContentItem;
+import logic.FontManager;
 import logic.SoundManager;
 
 import javax.swing.*;
@@ -25,7 +26,7 @@ public class ContentPanel {
         JLabel imageLabel = new JLabel(new ImageIcon(contentItem.getImage()));
         JLabel nameLabel = new JLabel(contentItem.toString());
         nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        nameLabel.setFont(new Font("a옛날사진관4", Font.PLAIN, 25));
+        nameLabel.setFont(FontManager.getFont(25));
 
         contentPanel.add(imageLabel, BorderLayout.CENTER);
         contentPanel.add(nameLabel, BorderLayout.SOUTH);

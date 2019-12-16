@@ -2,9 +2,9 @@ package graphic.game;
 
 import logic.ContentItem;
 import logic.FileManager;
-import logic.ListManager;
 
 import javax.swing.*;
+import javax.xml.transform.Result;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class GamePanel {
     List<ContentItem> winners = new ArrayList<>();
     FileManager fileManager;
 
-    ContentItem winner;
+    ContentItem winner = null;
 
     public GamePanel() {
 
@@ -38,11 +38,10 @@ public class GamePanel {
 
     public void setStageLayout() {
 
-
         leftContent = new ContentPanel(currentContents.get(currentRound * 2));
         rightContent = new ContentPanel(currentContents.get(currentRound * 2 + 1));
 
-        currentRoundLabel = new JLabel(Integer.toString(currentRound + 1) + "/" + Integer.toString(currentContents.size() / 2));
+        currentRoundLabel = new JLabel((currentRound + 1) + "/" + currentContents.size() / 2);
         currentRoundLabel.setFont(new Font("a옛날사진관4", Font.PLAIN, 50));
         currentRoundLabel.setHorizontalAlignment(SwingConstants.CENTER);
         currentRoundLabel.setVerticalAlignment(SwingConstants.CENTER);
@@ -55,6 +54,22 @@ public class GamePanel {
         gamePanel.add(rightContent.getPanel(), BorderLayout.EAST);
     }
 
+    public void setResultLayout(ContentItem winner) {
+
+        JLabel winnerName = new JLabel("승자: " + winner.toString());
+        ResultPanel winnerContent = new ResultPanel(winner);
+        JButton restartButton = new JButton("다시 시작?");
+
+        winnerName.setFont(new Font("a옛날사진관4", Font.PLAIN, 50));
+        winnerName.setHorizontalAlignment(SwingConstants.CENTER);
+
+        restartButton.setFont(new Font("a옛날사진관4", Font.PLAIN, 30));
+
+        gamePanel.add(winnerName, BorderLayout.NORTH);
+        gamePanel.add(winnerContent.getPanel(), BorderLayout.CENTER);
+        gamePanel.add(restartButton, BorderLayout.SOUTH);
+    }
+
     public void onContentClick(ContentItem selectedItem) {
 
         System.out.println("==========");
@@ -65,15 +80,20 @@ public class GamePanel {
         System.out.println("currentRound: " + (currentRound));
         System.out.println("num of contents: " + currentContents.size());
 
+        // end of each level
         if (currentRound == currentContents.size() / 2) {
             increaseLevel();
         }
-        if (currentContents.size() == 1) {
-            winner = winners.get(0);
-        }
+
         gamePanel.removeAll();
 
-        setStageLayout();
+        // end of game
+        if (currentContents.size() == 1) {
+            setResultLayout(selectedItem);
+        }
+        else {
+            setStageLayout();
+        }
 
         gamePanel.revalidate();
         gamePanel.repaint();
@@ -85,6 +105,10 @@ public class GamePanel {
         currentContents = winners;
         winners = new ArrayList<>();
         currentRound = 0;
+    }
+
+    public ContentItem getWinner() {
+        return winner;
     }
 
     public void getCurrentRound() {

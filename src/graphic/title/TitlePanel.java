@@ -2,6 +2,7 @@ package graphic.title;
 
 import events.MenuButtonListener;
 import graphic.game.GamePanel;
+import logic.FontManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +15,7 @@ public class TitlePanel {
 
         titlePanel.setBackground(Color.white);
         JLabel titleLabel = new JLabel("교수님 이상형 월드컵");
-        titleLabel.setFont(new Font("a옛날사진관4", Font.PLAIN, 80));
+        titleLabel.setFont(FontManager.getFont(80));
         titleLabel.setBorder(BorderFactory.createEmptyBorder(180,0,0,0));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         titlePanel.add(titleLabel, BorderLayout.NORTH);
