@@ -18,6 +18,7 @@ public class GamePanel {
 
     ContentPanel leftContent;
     ContentPanel rightContent;
+    List<ContentItem> currentContents = new ArrayList<>();
     List<ContentItem> winners = new ArrayList<>();
     FileManager fileManager;
 
@@ -26,19 +27,16 @@ public class GamePanel {
         gamePanel.setBorder(BorderFactory.createEmptyBorder(30,50,100,50));
         gamePanel.setBackground(Color.white);
 
-        JLabel currentLevel = new JLabel(Integer.toString(currentRound));
-        currentLevel.setHorizontalAlignment(SwingConstants.CENTER);
-        gamePanel.add(currentLevel, BorderLayout.NORTH);
-
         fileManager = new FileManager();
+        currentContents = fileManager.getShuffledContents();
 
         setStageLayout();
     }
 
     public void setStageLayout() {
-        leftContent = new ContentPanel(fileManager.getContents().get(currentRound * 2));
-        rightContent = new ContentPanel(fileManager.getContents().get(currentRound * 2 + 1));
-        currentRoundLabel = new JLabel(Integer.toString(currentRound));
+        leftContent = new ContentPanel(currentContents.get(currentRound * 2));
+        rightContent = new ContentPanel(currentContents.get(currentRound * 2 + 1));
+        currentRoundLabel = new JLabel(Integer.toString(currentRound) + "/" + Integer.toString(fileManager.getShuffledContents().size() / 2));
 
         currentRoundLabel.setFont(new Font("a옛날사진관4", Font.PLAIN, 50));
         currentRoundLabel.setHorizontalAlignment(SwingConstants.CENTER);

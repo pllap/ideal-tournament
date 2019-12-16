@@ -42,6 +42,10 @@ public class FileManager {
         return contents;
     }
 
+    public List<ContentItem> getShuffledContents() {
+        return ListManager.cutList(ListManager.shuffleList(contents));
+    }
+
     public int getNumData() {
         return numData;
     }
