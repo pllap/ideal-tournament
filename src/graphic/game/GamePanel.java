@@ -23,6 +23,8 @@ public class GamePanel {
     List<ContentItem> winners = new ArrayList<>();
     FileManager fileManager;
 
+    ContentItem winner;
+
     public GamePanel() {
 
         gamePanel.setBorder(BorderFactory.createEmptyBorder(30,50,100,50));
@@ -62,10 +64,13 @@ public class GamePanel {
         System.out.println();
         System.out.println("currentRound: " + (currentRound));
         System.out.println("num of contents: " + currentContents.size());
+
         if (currentRound == currentContents.size() / 2) {
             increaseLevel();
         }
-
+        if (currentContents.size() == 1) {
+            winner = winners.get(0);
+        }
         gamePanel.removeAll();
 
         setStageLayout();

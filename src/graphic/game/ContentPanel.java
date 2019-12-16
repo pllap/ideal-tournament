@@ -1,6 +1,7 @@
 package graphic.game;
 
 import logic.ContentItem;
+import logic.SoundManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -48,6 +49,7 @@ public class ContentPanel {
             @Override
             public void mouseReleased(MouseEvent e) {
                 contentClick.accept(item);
+                SoundManager.playClick();
             }
         });
     }
