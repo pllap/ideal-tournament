@@ -2,6 +2,7 @@ package graphic.game;
 
 import logic.ContentItem;
 import logic.FileManager;
+import logic.FontManager;
 
 import javax.swing.*;
 import javax.xml.transform.Result;
@@ -60,10 +61,10 @@ public class GamePanel {
         ResultPanel winnerContent = new ResultPanel(winner);
         JButton restartButton = new JButton("다시 시작?");
 
-        winnerName.setFont(new Font("a옛날사진관4", Font.PLAIN, 50));
+        winnerName.setFont(FontManager.getFont(50));
         winnerName.setHorizontalAlignment(SwingConstants.CENTER);
 
-        restartButton.setFont(new Font("a옛날사진관4", Font.PLAIN, 30));
+        restartButton.setFont(FontManager.getFont(30));
 
         gamePanel.add(winnerName, BorderLayout.NORTH);
         gamePanel.add(winnerContent.getPanel(), BorderLayout.CENTER);
