@@ -22,13 +22,6 @@ public class MainFrame {
         mainPanel = new MainPanel();
         mainFrame.getContentPane().add(mainPanel.getPanel(), BorderLayout.CENTER);
 
-        // gamePanel
-        gamePanel = new GamePanel();
-
-        // titlePanel
-        titlePanel = new TitlePanel(mainPanel, gamePanel);
-        mainPanel.getPanel().add(titlePanel.getPanel(), BorderLayout.CENTER);
-
 
         mainFrame.setSize(800, 600);
         mainFrame.setResizable(false);
