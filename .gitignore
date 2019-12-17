@@ -15,11 +15,6 @@ local.properties
 .loadpath
 .recommenders
 
-# resource directory
-res/
-*.png
-*.jpg
-
 # External tool builders
 .externalToolBuilders/
 
