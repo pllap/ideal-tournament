@@ -1,5 +1,7 @@
 package graphic.title;
 
+import logic.FontManager;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,7 +11,6 @@ public class MenuPanel {
 
     public MenuPanel(JButton[] menuButton) {
 
-        Font menuFont = new Font("a옛날사진관4", Font.PLAIN, 30);
         final String[] MENU_TEXT = { "게임 시작", "설정", "게임 종료" };
 
         menuPanel.setBorder(BorderFactory.createEmptyBorder(100,300,50,300));
@@ -17,7 +18,7 @@ public class MenuPanel {
         for (int i = 0; i < 3; ++i) {
             menuButton[i] = new JButton(MENU_TEXT[i]);
             menuButton[i].setHorizontalAlignment(SwingConstants.CENTER);
-            menuButton[i].setFont(menuFont);
+            menuButton[i].setFont(FontManager.getFont(30));
             menuPanel.add(menuButton[i]);
         }
     }

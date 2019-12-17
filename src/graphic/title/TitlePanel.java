@@ -1,6 +1,7 @@
 package graphic.title;
 
 import events.MenuButtonListener;
+import graphic.MainPanel;
 import graphic.game.GamePanel;
 import logic.FontManager;
 
@@ -11,7 +12,7 @@ public class TitlePanel {
 
     private JPanel titlePanel = new JPanel(new BorderLayout());
 
-    public TitlePanel(JPanel mainPanel, GamePanel gamePanel) {
+    public TitlePanel(MainPanel mainPanel, GamePanel gamePanel) {
 
         titlePanel.setBackground(Color.white);
         JLabel titleLabel = new JLabel("교수님 이상형 월드컵");

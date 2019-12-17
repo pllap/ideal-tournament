@@ -8,25 +8,26 @@ import java.awt.*;
 
 public class MainFrame {
 
-    private JPanel mainPanel;
+    private JFrame mainFrame;
+    private MainPanel mainPanel;
     private TitlePanel titlePanel;
     private GamePanel gamePanel;
 
     public MainFrame() {
-        JFrame mainFrame = new JFrame();
+        mainFrame = new JFrame();
         mainFrame.setTitle("이상형 월드컵");
 
 
         // mainPanel
-        mainPanel = new JPanel(new BorderLayout());
-        mainFrame.getContentPane().add(mainPanel, BorderLayout.CENTER);
+        mainPanel = new MainPanel();
+        mainFrame.getContentPane().add(mainPanel.getPanel(), BorderLayout.CENTER);
 
         // gamePanel
         gamePanel = new GamePanel();
 
         // titlePanel
         titlePanel = new TitlePanel(mainPanel, gamePanel);
-        mainPanel.add(titlePanel.getPanel(), BorderLayout.CENTER);
+        mainPanel.getPanel().add(titlePanel.getPanel(), BorderLayout.CENTER);
 
 
         mainFrame.setSize(800, 600);

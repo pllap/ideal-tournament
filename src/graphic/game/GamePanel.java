@@ -7,6 +7,8 @@ import logic.FontManager;
 import javax.swing.*;
 import javax.xml.transform.Result;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,6 +67,12 @@ public class GamePanel {
         winnerName.setHorizontalAlignment(SwingConstants.CENTER);
 
         restartButton.setFont(FontManager.getFont(30));
+        restartButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
 
         gamePanel.add(winnerName, BorderLayout.NORTH);
         gamePanel.add(winnerContent.getPanel(), BorderLayout.CENTER);
