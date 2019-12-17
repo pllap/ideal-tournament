@@ -5,10 +5,7 @@ import logic.FileManager;
 import logic.FontManager;
 
 import javax.swing.*;
-import javax.xml.transform.Result;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +14,6 @@ public class GamePanel {
     private JPanel gamePanel = new JPanel(new BorderLayout());
 
     int currentRound;
-    int currentLevel;
     JLabel currentRoundLabel;
 
     ContentPanel leftContent;
@@ -27,6 +23,8 @@ public class GamePanel {
     FileManager fileManager;
 
     ContentItem winner = null;
+
+    Runnable onGameEndButton;
 
     public GamePanel() {
 
@@ -40,6 +38,8 @@ public class GamePanel {
     }
 
     public void setStageLayout() {
+
+        System.out.println("setStageLayout()");
 
         leftContent = new ContentPanel(currentContents.get(currentRound * 2));
         rightContent = new ContentPanel(currentContents.get(currentRound * 2 + 1));
@@ -59,6 +59,8 @@ public class GamePanel {
 
     public void setResultLayout(ContentItem winner) {
 
+        System.out.println("setResultLayout()");
+
         JLabel winnerName = new JLabel("승자: " + winner.toString());
         ResultPanel winnerContent = new ResultPanel(winner);
         JButton restartButton = new JButton("다시 시작?");
@@ -67,16 +69,15 @@ public class GamePanel {
         winnerName.setHorizontalAlignment(SwingConstants.CENTER);
 
         restartButton.setFont(FontManager.getFont(30));
-        restartButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
+        restartButton.addActionListener(e -> onGameEndButton.run());
 
         gamePanel.add(winnerName, BorderLayout.NORTH);
         gamePanel.add(winnerContent.getPanel(), BorderLayout.CENTER);
         gamePanel.add(restartButton, BorderLayout.SOUTH);
+    }
+
+    public void addRestartGame(Runnable onGameEndButton) {
+        this.onGameEndButton = onGameEndButton;
     }
 
     public void onContentClick(ContentItem selectedItem) {
@@ -90,7 +91,7 @@ public class GamePanel {
         System.out.println("num of contents: " + currentContents.size());
 
         // end of each level
-        if (currentRound == currentContents.size() / 2) {
+        if (currentRound == currentContents.size() / 2 && currentContents.size() != 1) {
             increaseLevel();
         }
 
@@ -114,6 +115,19 @@ public class GamePanel {
         currentContents = winners;
         winners = new ArrayList<>();
         currentRound = 0;
+    }
+
+    public void resetGame() {
+        System.out.println("==========");
+        System.out.println("resetGame() 실행");
+
+        gamePanel.removeAll();
+
+        currentContents = fileManager.getShuffledContents();
+        winners = new ArrayList<>();
+        currentRound = 0;
+
+        setStageLayout();
     }
 
     public ContentItem getWinner() {

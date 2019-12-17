@@ -2,6 +2,7 @@ package events;
 
 import graphic.MainPanel;
 import graphic.game.GamePanel;
+import logic.SoundManager;
 import sun.applet.Main;
 
 import javax.swing.*;
@@ -22,6 +23,7 @@ public class MenuButtonListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        SoundManager.playClick();
         JButton button = (JButton) e.getSource();
         String compare = button.getText();
         switch (compare) {

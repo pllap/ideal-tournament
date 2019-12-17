@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,10 @@ public class FileManager {
     }
 
     public List<ContentItem> getShuffledContents() {
-        return ListManager.cutList(ListManager.shuffleList(contents));
+
+        List<ContentItem> temp = new ArrayList<>(contents);
+
+        return ListManager.cutList(ListManager.shuffleList(temp));
     }
 
     public int getNumData() {

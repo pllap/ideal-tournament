@@ -1,8 +1,5 @@
 package graphic;
 
-import graphic.game.GamePanel;
-import graphic.title.TitlePanel;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,8 +7,6 @@ public class MainFrame {
 
     private JFrame mainFrame;
     private MainPanel mainPanel;
-    private TitlePanel titlePanel;
-    private GamePanel gamePanel;
 
     public MainFrame() {
         mainFrame = new JFrame();
