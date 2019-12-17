@@ -1,14 +1,11 @@
 package logic;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class FileManager {
 
@@ -24,9 +21,9 @@ public class FileManager {
 
     public FileManager() {
 
-        File datas = new File(PATH);
+        File data = new File(PATH);
         int i = 0;
-        for (String fileName : datas.list()) {
+        for (String fileName : Objects.requireNonNull(data.list())) {
             try {
                 contents.add( new ContentItem(ImageIO.read(new File(PATH + i + ".png")), names[i]) );
                 ++i;

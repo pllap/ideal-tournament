@@ -1,6 +1,5 @@
 package logic;
 
-import javax.swing.*;
 import java.awt.image.BufferedImage;
 
 public class ContentItem {

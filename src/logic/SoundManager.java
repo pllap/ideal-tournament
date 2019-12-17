@@ -9,18 +9,24 @@ public class SoundManager {
 
     private static File bgm = new File("res/sound/for_you.wav");
     private static File click = new File("res/sound/click.wav");
+    private static Clip clip;
 
     public static void playBgm() {
 
         try {
             AudioInputStream stream = AudioSystem.getAudioInputStream(bgm);
-            Clip clip = AudioSystem.getClip();
+            clip = AudioSystem.getClip();
             clip.open(stream);
             clip.start();
 
         } catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void stopBgm() {
+
+        clip.stop();
     }
 
     public static void playClick() {

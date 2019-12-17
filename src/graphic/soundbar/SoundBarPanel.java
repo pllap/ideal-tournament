@@ -1,8 +1,11 @@
 package graphic.soundbar;
 
+import logic.SoundManager;
+
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class SoundBarPanel {
 
@@ -13,9 +16,25 @@ public class SoundBarPanel {
         soundBarPanel.setBackground(Color.white);
 
         ImageIcon soundOnImg = new ImageIcon("res/sound_on.png");
-        JLabel soundOnLabel = new JLabel(soundOnImg);
+        ImageIcon soundOffImg = new ImageIcon("res/sound_off.png");
+        JLabel soundLabel = new JLabel(soundOnImg);
 
-        soundBarPanel.add(soundOnLabel, BorderLayout.EAST);
+        soundLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                JLabel label = (JLabel) e.getSource();
+                if (soundOnImg.equals(label.getIcon())) {
+                    label.setIcon(soundOffImg);
+                    SoundManager.stopBgm();
+                }
+                else {
+                    label.setIcon(soundOnImg);
+                    SoundManager.playBgm();
+                }
+            }
+        });
+
+        soundBarPanel.add(soundLabel, BorderLayout.EAST);
     }
 
     public JPanel getPanel() {

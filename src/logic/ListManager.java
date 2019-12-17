@@ -18,9 +18,8 @@ public class ListManager {
 
     public static List<ContentItem> shuffleList(List<ContentItem> list) {
 
-        List<ContentItem> temp = list;
-        Collections.shuffle(temp);
-        return temp;
+        Collections.shuffle(list);
+        return list;
     }
 
     private static int getCutListSize(List<ContentItem> list) {
