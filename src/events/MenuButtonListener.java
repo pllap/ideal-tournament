@@ -3,7 +3,6 @@ package events;
 import graphic.MainPanel;
 import graphic.game.GamePanel;
 import logic.SoundManager;
-import sun.applet.Main;
 
 import javax.swing.*;
 import java.awt.*;
