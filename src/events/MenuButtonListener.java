@@ -1,7 +1,8 @@
 package events;
 
-import graphic.GamePanel;
-import graphic.TitlePanel;
+import graphic.MainPanel;
+import graphic.game.GamePanel;
+import logic.SoundManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,10 +11,10 @@ import java.awt.event.ActionListener;
 
 public class MenuButtonListener implements ActionListener {
 
-    JPanel mainPanel;
+    MainPanel mainPanel;
     GamePanel gamePanel;
 
-    public MenuButtonListener(JPanel mainPanel, GamePanel gamePanel) {
+    public MenuButtonListener(MainPanel mainPanel, GamePanel gamePanel) {
         this.mainPanel = mainPanel;
         this.gamePanel = gamePanel;
     }
@@ -21,19 +22,22 @@ public class MenuButtonListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        SoundManager.playClick();
         JButton button = (JButton) e.getSource();
         String compare = button.getText();
         switch (compare) {
             case "게임 시작":
-                mainPanel.removeAll();
-                mainPanel.add(gamePanel.getPanel(), BorderLayout.CENTER);
-                mainPanel.revalidate();
-                mainPanel.repaint();
+                System.out.println("game start");
+                mainPanel.getPanel().removeAll();
+                mainPanel.getPanel().add(gamePanel.getPanel(), BorderLayout.CENTER);
+                mainPanel.getPanel().revalidate();
+                mainPanel.getPanel().repaint();
                 break;
             case "설정":
                 System.out.println("setting");
                 break;
             case "게임 종료":
+                System.out.println("exit");
                 System.exit(0);
         }
     }
