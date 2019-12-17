@@ -15,6 +15,11 @@ local.properties
 .loadpath
 .recommenders
 
+# res files
+src/
+*.png
+*.wav
+
 # External tool builders
 .externalToolBuilders/
 
