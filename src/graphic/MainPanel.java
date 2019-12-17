@@ -3,6 +3,7 @@ package graphic;
 import graphic.game.GamePanel;
 import graphic.soundbar.SoundBarPanel;
 import graphic.title.TitlePanel;
+import logic.SoundManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,6 +33,7 @@ public class MainPanel {
 
         System.out.println("restartGame");
 
+        SoundManager.playClick();
         mainPanel.removeAll();
 
         gamePanel.resetGame();
