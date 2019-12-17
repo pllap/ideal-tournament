@@ -1,6 +1,7 @@
 package graphic;
 
 import graphic.game.GamePanel;
+import graphic.soundbar.SoundBarPanel;
 import graphic.title.TitlePanel;
 
 import javax.swing.*;
@@ -11,17 +12,19 @@ public class MainPanel {
     private JPanel mainPanel;
     private GamePanel gamePanel;
     private TitlePanel titlePanel;
+    private SoundBarPanel soundBarPanel;
 
     public MainPanel() {
 
         this.mainPanel = new JPanel(new BorderLayout());
 
-        // gamePanel
+        soundBarPanel = new SoundBarPanel();
+        mainPanel.add(soundBarPanel.getPanel(), BorderLayout.NORTH);
+
         gamePanel = new GamePanel();
         gamePanel.addRestartGame(this::restartGame);
 
-        // titlePanel
-        titlePanel = new TitlePanel(this, gamePanel);
+        titlePanel = new TitlePanel(this, gamePanel, soundBarPanel);
         mainPanel.add(titlePanel.getPanel(), BorderLayout.CENTER);
     }
 
@@ -32,6 +35,7 @@ public class MainPanel {
         mainPanel.removeAll();
 
         gamePanel.resetGame();
+        mainPanel.add(soundBarPanel.getPanel(), BorderLayout.NORTH);
         mainPanel.add(titlePanel.getPanel(), BorderLayout.CENTER);
 
         mainPanel.revalidate();

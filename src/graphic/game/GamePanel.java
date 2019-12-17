@@ -28,7 +28,7 @@ public class GamePanel {
 
     public GamePanel() {
 
-        gamePanel.setBorder(BorderFactory.createEmptyBorder(30,50,100,50));
+        gamePanel.setBorder(BorderFactory.createEmptyBorder(0,50,100,50));
         gamePanel.setBackground(Color.white);
 
         fileManager = new FileManager();
@@ -61,14 +61,16 @@ public class GamePanel {
 
         System.out.println("setResultLayout()");
 
+        gamePanel.setBorder(BorderFactory.createEmptyBorder(0,50,50,50));
+
         JLabel winnerName = new JLabel("승자: " + winner.toString());
         ResultPanel winnerContent = new ResultPanel(winner);
-        JButton restartButton = new JButton("다시 시작?");
+        JButton restartButton = new JButton("타이틀로 이동");
 
         winnerName.setFont(FontManager.getFont(50));
         winnerName.setHorizontalAlignment(SwingConstants.CENTER);
 
-        restartButton.setFont(FontManager.getFont(30));
+        restartButton.setFont(FontManager.getFont(20));
         restartButton.addActionListener(e -> onGameEndButton.run());
 
         gamePanel.add(winnerName, BorderLayout.NORTH);
@@ -123,6 +125,7 @@ public class GamePanel {
 
         gamePanel.removeAll();
 
+        gamePanel.setBorder(BorderFactory.createEmptyBorder(0,50,100,50));
         currentContents = fileManager.getShuffledContents();
         winners = new ArrayList<>();
         currentRound = 0;

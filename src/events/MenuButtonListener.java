@@ -2,6 +2,7 @@ package events;
 
 import graphic.MainPanel;
 import graphic.game.GamePanel;
+import graphic.soundbar.SoundBarPanel;
 import logic.SoundManager;
 
 import javax.swing.*;
@@ -13,10 +14,12 @@ public class MenuButtonListener implements ActionListener {
 
     MainPanel mainPanel;
     GamePanel gamePanel;
+    SoundBarPanel soundBarPanel;
 
-    public MenuButtonListener(MainPanel mainPanel, GamePanel gamePanel) {
+    public MenuButtonListener(MainPanel mainPanel, GamePanel gamePanel, SoundBarPanel soundBarPanel) {
         this.mainPanel = mainPanel;
         this.gamePanel = gamePanel;
+        this.soundBarPanel = soundBarPanel;
     }
 
     @Override
@@ -29,6 +32,7 @@ public class MenuButtonListener implements ActionListener {
             case "게임 시작":
                 System.out.println("game start");
                 mainPanel.getPanel().removeAll();
+                mainPanel.getPanel().add(soundBarPanel.getPanel(), BorderLayout.NORTH);
                 mainPanel.getPanel().add(gamePanel.getPanel(), BorderLayout.CENTER);
                 mainPanel.getPanel().revalidate();
                 mainPanel.getPanel().repaint();

@@ -13,7 +13,7 @@ public class MenuPanel {
 
         final String[] MENU_TEXT = { "게임 시작", "설정", "게임 종료" };
 
-        menuPanel.setBorder(BorderFactory.createEmptyBorder(100,300,50,300));
+        menuPanel.setBorder(BorderFactory.createEmptyBorder(50,300,50,300));
         menuPanel.setBackground(Color.white);
         for (int i = 0; i < 3; ++i) {
             menuButton[i] = new JButton(MENU_TEXT[i]);
