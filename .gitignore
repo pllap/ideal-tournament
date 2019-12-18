@@ -16,7 +16,7 @@ local.properties
 .recommenders
 
 # res files
-src/
+res/
 *.png
 *.wav
 

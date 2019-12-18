@@ -2,6 +2,7 @@ package events;
 
 import graphic.MainPanel;
 import graphic.game.GamePanel;
+import graphic.setting.SettingPanel;
 import graphic.soundbar.SoundBarPanel;
 import logic.SoundManager;
 
@@ -14,11 +15,13 @@ public class MenuButtonListener implements ActionListener {
 
     MainPanel mainPanel;
     GamePanel gamePanel;
+    SettingPanel settingPanel;
     SoundBarPanel soundBarPanel;
 
-    public MenuButtonListener(MainPanel mainPanel, GamePanel gamePanel, SoundBarPanel soundBarPanel) {
+    public MenuButtonListener(MainPanel mainPanel, GamePanel gamePanel, SettingPanel settingPanel, SoundBarPanel soundBarPanel) {
         this.mainPanel = mainPanel;
         this.gamePanel = gamePanel;
+        this.settingPanel = settingPanel;
         this.soundBarPanel = soundBarPanel;
     }
 
@@ -39,6 +42,11 @@ public class MenuButtonListener implements ActionListener {
                 break;
             case "설정":
                 System.out.println("setting");
+                mainPanel.getPanel().removeAll();
+                mainPanel.getPanel().add(soundBarPanel.getPanel(), BorderLayout.NORTH);
+                mainPanel.getPanel().add(settingPanel.getPanel(), BorderLayout.CENTER);
+                mainPanel.getPanel().revalidate();
+                mainPanel.getPanel().repaint();
                 break;
             case "게임 종료":
                 System.out.println("exit");

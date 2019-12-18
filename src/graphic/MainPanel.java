@@ -1,6 +1,7 @@
 package graphic;
 
 import graphic.game.GamePanel;
+import graphic.setting.SettingPanel;
 import graphic.soundbar.SoundBarPanel;
 import graphic.title.TitlePanel;
 import logic.SoundManager;
@@ -13,6 +14,7 @@ public class MainPanel {
     private JPanel mainPanel;
     private GamePanel gamePanel;
     private TitlePanel titlePanel;
+    private SettingPanel settingPanel;
     private SoundBarPanel soundBarPanel;
 
     public MainPanel() {
@@ -20,13 +22,15 @@ public class MainPanel {
         this.mainPanel = new JPanel(new BorderLayout());
 
         soundBarPanel = new SoundBarPanel();
-        mainPanel.add(soundBarPanel.getPanel(), BorderLayout.NORTH);
-
         gamePanel = new GamePanel();
-        gamePanel.addRestartGame(this::restartGame);
+        settingPanel = new SettingPanel();
+        titlePanel = new TitlePanel(this, gamePanel, settingPanel, soundBarPanel);
 
-        titlePanel = new TitlePanel(this, gamePanel, soundBarPanel);
+        mainPanel.add(soundBarPanel.getPanel(), BorderLayout.NORTH);
         mainPanel.add(titlePanel.getPanel(), BorderLayout.CENTER);
+
+        gamePanel.addRestartGame(this::restartGame);
+        settingPanel.addBackButtonClick(this::showTitle);
     }
 
     public void restartGame() {
@@ -37,6 +41,20 @@ public class MainPanel {
         mainPanel.removeAll();
 
         gamePanel.resetGame();
+        mainPanel.add(soundBarPanel.getPanel(), BorderLayout.NORTH);
+        mainPanel.add(titlePanel.getPanel(), BorderLayout.CENTER);
+
+        mainPanel.revalidate();
+        mainPanel.repaint();
+    }
+
+    public void showTitle() {
+
+        System.out.println("restartGame");
+
+        SoundManager.playClick();
+        mainPanel.removeAll();
+
         mainPanel.add(soundBarPanel.getPanel(), BorderLayout.NORTH);
         mainPanel.add(titlePanel.getPanel(), BorderLayout.CENTER);
 
