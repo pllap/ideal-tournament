@@ -3,6 +3,7 @@ package graphic.title;
 import events.MenuButtonListener;
 import graphic.MainPanel;
 import graphic.game.GamePanel;
+import graphic.setting.SettingPanel;
 import graphic.soundbar.SoundBarPanel;
 import logic.FontManager;
 
@@ -13,7 +14,7 @@ public class TitlePanel {
 
     private JPanel titlePanel = new JPanel(new BorderLayout());
 
-    public TitlePanel(MainPanel mainPanel, GamePanel gamePanel, SoundBarPanel soundBarPanel) {
+    public TitlePanel(MainPanel mainPanel, GamePanel gamePanel, SettingPanel settingPanel, SoundBarPanel soundBarPanel) {
 
         titlePanel.setBackground(Color.white);
         JLabel titleLabel = new JLabel("교수님 이상형 월드컵");
@@ -27,7 +28,7 @@ public class TitlePanel {
         titlePanel.add(menuPanel.getPanel(), BorderLayout.CENTER);
 
         for (int i = 0; i < 3; ++i) {
-            menuButton[i].addActionListener(new MenuButtonListener(mainPanel, gamePanel, soundBarPanel));
+            menuButton[i].addActionListener(new MenuButtonListener(mainPanel, gamePanel, settingPanel, soundBarPanel));
         }
     }
 
